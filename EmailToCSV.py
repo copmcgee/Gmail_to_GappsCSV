@@ -3,6 +3,7 @@ from httplib2 import Http
 from oauth2client import file, client, tools
 import base64
 import datetime as dt
+import Conf
 
 store_dir = "c:/cisco/"
 today = dt.datetime.today().date()
@@ -47,7 +48,7 @@ def main():
 		headrs = msg['payload']['headers'] #headers include to, from, subject, date and more
 
 		for item in headrs:
-			if item['name'] == 'From' and item['value'] == 'myemail': # ['name':'From'] in headrs that has ['value': 'myemail']
+			if item['name'] == 'From' and item['value'] == Conf.CB_email: # ['name':'From'] in headrs that has ['value': 'myemail']
 				Get_Attachments(msg, service)
 
 
